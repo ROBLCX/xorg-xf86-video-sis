@@ -60,7 +60,7 @@ Section "Screen"
     Device          "Configured Video Device"
 EndSection
 ```
-5. If you have a chipset that supports 3D acceleration, add these lines to your X configuration file to enable the DRI driver (/etc/X11/xorg.conf):  
+5. If you have a chipset that supports 3D acceleration, add these lines to your X configuration file (/etc/X11/xorg.conf) to enable the DRI driver:  
 ```
 Section "DRI"
   Mode         0666
