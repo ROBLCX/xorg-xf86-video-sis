@@ -36,12 +36,17 @@ This driver currently supports these features:
 # Installation 
 1. Clone the git repoistory: `git clone https://github.com/ROBLCX/xorg-xf86-video-sis.git`
 2. Switch to the latest release: `git checkout for-xf86-video-sis-0.12.0`
---3. Compile the driver: ```autoreconf 
+3. Compile the driver: 
+`
+autoreconf 
 automake 
 ./configure --prefix=/usr --disable-static 
 make 
-make install```
-4. Add these lines to your X configuration file (/etc/X11/xorg.conf): ```Section "Device"
+make install
+`
+
+4. Add these lines to your X configuration file (/etc/X11/xorg.conf):
+`Section "Device"
     Identifier      "Configured Video Device"
     Driver          "sis"
 EndSection
@@ -52,7 +57,7 @@ Section "Screen"
     Identifier      "Default Screen"
     Monitor         "Configured Monitor"
     Device          "Configured Video Device"
-EndSection```
+EndSection`
 
 # X Configuration Options
 The following options are of particular interest for the SiS driver. Each of them must be specified in the Device section of the X configuration file for this card.  
