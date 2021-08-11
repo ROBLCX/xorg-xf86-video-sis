@@ -31,7 +31,7 @@ This driver currently supports these features:
 -  Xinerama (300/315/330/340 series only)
 -  Merged framebuffer mode (300/315/330/340 series only)
 -  SiSCtrl interface (300/315/330/340 series only)
--  Basic 3D acceleration and OpenGL support (300 series only)  
+-  3D acceleration and OpenGL support (300 series only)  
 
 # Installation 
 1. Clone the git repoistory: `git clone https://github.com/ROBLCX/xorg-xf86-video-sis.git`
@@ -60,7 +60,7 @@ Section "Screen"
     Device          "Configured Video Device"
 EndSection
 ```
-5. If you have a chipset that supports the DRI and you want to use it add these lines to your X configuration file (/etc/X11/xorg.conf):  
+5. If you have a chipset that supports 3D acceleration, add these lines to your X configuration file to enable the DRI driver (/etc/X11/xorg.conf):  
 ```
 Section "DRI"
   Mode         0666
