@@ -36,7 +36,7 @@ This driver currently supports these features:
 # Installation 
 1. Clone the git repoistory: `git clone https://github.com/ROBLCX/xorg-xf86-video-sis.git`
 2. Switch to the latest release: `git checkout for-xf86-video-sis-0.12.0`
-3. Compile the driver: 
+3. Compile the driver:  
 `
 autoreconf 
 automake 
@@ -45,7 +45,7 @@ make
 make install
 `
 
-4. Add these lines to your X configuration file (/etc/X11/xorg.conf):
+4. Add these lines to your X configuration file (/etc/X11/xorg.conf):  
 `Section "Device"
     Identifier      "Configured Video Device"
     Driver          "sis"
