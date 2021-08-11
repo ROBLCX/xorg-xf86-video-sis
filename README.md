@@ -22,7 +22,7 @@ This driver currently supports these features:
 -  15 bit color depth support (Legacy series only)
 -  Hardware cursor
 -  Color hardware cursor (315/330/340 series only)
--  XAA, EXA, XVideo, XRender and other extensions (The XVideo extension is not currently supported on the Volari Z7, hardware XRender acceleration is supported on the 315/330/340 series only, the other chipsets use software XRender acceleration. )
+-  XAA, EXA, XVideo, XRender and other extensions (The XVideo extension is not currently supported on the Volari Z7, hardware XRender acceleration is supported on the 315/330/340 series only, the other chipsets use software XRender acceleration.)
 -  TV output (6326 only)
 -  TV output on adapters that use Chrontel TV encoders or SiS video bridges (300/315/330/340 series only, other encoder chips and video bridges may not be supported)
 -  LCD support via LVDS transmitters or SiS video bridges (300/315/330/340 series only, other bridges may not be supported)
