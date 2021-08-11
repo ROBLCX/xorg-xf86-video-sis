@@ -60,6 +60,12 @@ Section "Screen"
     Device          "Configured Video Device"
 EndSection
 ```
+5. If you have a chipset that supports the DRI and you want to use it add these lines to your X configuration file (/etc/X11/xorg.conf):  
+```
+Section "DRI"
+  Mode         0666
+EndSection
+```
 
 # X Configuration Options
 The following options are of particular interest for the SiS driver. Each of them must be specified in the Device section of the X configuration file for this card.  
