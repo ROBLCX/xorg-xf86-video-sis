@@ -1,5 +1,5 @@
 # xorg-xf86-video-sis
-### X video driver for various SiS display adapters
+### a X.org/XFree86 video driver for various SIS display adapters.
 This driver currently supports these display adapters:
 -  Legacy series: SiS 5597/5598, 6326, 6236/AGP/DVD, 530/620
 -  300 series: SiS 300/305, 540, 630/730
