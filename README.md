@@ -7,7 +7,7 @@ This driver currently supports these display adapters:
 -  330 series: SiS 330/Xabre, 760, 760GX, M760, M760GX, 761, 761GX, M761, M761GX
 -  340 series: SiS 34x, XGI Volari Z7, V3XT, V5, V8i
 
-This driver currently does not support these display adapters:  
+This driver currently does not support these display adapters (Use the generic VGA or VESA driver for these chipsets):  
 -  SiS 6201
 -  SiS 6202
 -  SiS 6205
