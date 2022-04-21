@@ -302,78 +302,49 @@
 #define SISVERBLEVEL 4
 #endif
 
-#ifndef _XF86_PCIINFO_H
+/*
+ * SiS PCI Vendor ID
+ */
 #define PCI_VENDOR_SIS			0x1039
-/* SiS */
+
+/*
+ * SiS PCI Device ID
+ */
 #define PCI_CHIP_SG86C201		0x0001
 #define PCI_CHIP_SG86C202		0x0002
-#define PCI_CHIP_SG85C503		0x0008
 #define PCI_CHIP_SIS5597		0x0200
 /* Agregado por Carlos Duclos & Manuel Jander */
 #define PCI_CHIP_SIS82C204		0x0204
 #define PCI_CHIP_SG86C205		0x0205
 #define PCI_CHIP_SG86C215		0x0215
 #define PCI_CHIP_SG86C225		0x0225
-#define PCI_CHIP_85C501			0x0406
-#define PCI_CHIP_85C496			0x0496
-#define PCI_CHIP_85C601			0x0601
-#define PCI_CHIP_85C5107		0x5107
-#define PCI_CHIP_85C5511		0x5511
-#define PCI_CHIP_85C5513		0x5513
-#define PCI_CHIP_SIS5571		0x5571
-#define PCI_CHIP_SIS5597_2		0x5597
 #define PCI_CHIP_SIS530			0x6306
 #define PCI_CHIP_SIS6326		0x6326
-#define PCI_CHIP_SIS7001		0x7001
 #define PCI_CHIP_SIS300			0x0300
 #define PCI_CHIP_SIS315H		0x0310
+#define PCI_CHIP_SIS315			0x0315
 #define PCI_CHIP_SIS315PRO		0x0325
 #define PCI_CHIP_SIS330			0x0330
-#define PCI_CHIP_SIS630			0x6300
 #define PCI_CHIP_SIS540			0x5300
+#define PCI_CHIP_SIS630			0x6300
 #define PCI_CHIP_SIS550			0x5315
 #define PCI_CHIP_SIS650			0x6325
-#define PCI_CHIP_SIS730			0x7300
+#define PCI_CHIP_SIS330			0x0330
+#define PCI_CHIP_SIS660			0x6330
+#define PCI_CHIP_SIS340			0x0340
 
-#endif
 
-/* For SiS315/550/650/740/330/660 - these should be moved elsewhere! */
-#ifndef PCI_CHIP_SIS315H
-#define PCI_CHIP_SIS315H	0x0310
-#endif
-#ifndef PCI_CHIP_SIS315
-#define PCI_CHIP_SIS315		0x0315
-#endif
-#ifndef PCI_CHIP_SIS315PRO
-#define PCI_CHIP_SIS315PRO	0x0325
-#endif
-#ifndef PCI_CHIP_SIS550
-#define PCI_CHIP_SIS550		0x5315	/* 550_VGA */
-#endif
-#ifndef PCI_CHIP_SIS650
-#define PCI_CHIP_SIS650		0x6325  /* 650_VGA and 740_VGA */
-#endif
-#ifndef PCI_CHIP_SIS330
-#define PCI_CHIP_SIS330		0x0330
-#endif
-#ifndef PCI_CHIP_SIS660
-#define PCI_CHIP_SIS660		0x6330	/* 661_VGA, 741_VGA, 760_VGA, 761_VGA */
-#endif
-#ifndef PCI_CHIP_SIS340
-#define PCI_CHIP_SIS340		0x0340
-#endif
+/*
+ * XGI Technology PCI Vendor ID
+ */
+#define PCI_VENDOR_XGI		0x18CA
 
-#ifndef PCI_VENDOR_XGI
-#define PCI_VENDOR_XGI		0x18ca
-#endif
-
-#ifndef PCI_CHIP_XGIXG20
+/*
+ * XGI Technology PCI Device ID
+ */
 #define PCI_CHIP_XGIXG20	0x0020
-#endif
-
-#ifndef PCI_CHIP_XGIXG40
 #define PCI_CHIP_XGIXG40	0x0040
-#endif
+
 
 /* pSiS->Flags (old series only) */
 #define SYNCDRAM		0x00000001
@@ -496,7 +467,7 @@
 #define VB2_LCD162MHZBRIDGE	(VB2_301C  | VB2_307T)
 /* CRT2/LCD over 1280 (overflow bits in Part4) */
 #define VB2_LCDOVER1280BRIDGE	(VB2_301C  | VB2_307T   | VB2_302LV | VB2_302ELV | VB2_307LV)
-/* CRT2/LCD over 1600? Is this really gonna happen, or will there be LCDA only for large panels? */
+/* CRT2/LCD over 1600? Is this really going to happen, or will there be LCDA only for large panels? */
 #define VB2_LCDOVER1600BRIDGE	(VB2_307T  | VB2_307LV)
 /* VGA2 up to 202MHz (1600x1200@75) */
 #define VB2_RAMDAC202MHZBRIDGE	(VB2_301C  | VB2_307T)
@@ -807,7 +778,7 @@ typedef struct {
     UShort ch70xx[64];
     unsigned int sisMMIO85C0;
     UChar  sis6326tv[0x46];
-    unsigned int sisRegsPCI50, sisRegsPCIA0;
+    unsigned long sisRegsPCI50, sisRegsPCIA0;
     UChar  BIOSModeSave;
 } SISRegRec, *SISRegPtr;
 
@@ -1240,7 +1211,7 @@ typedef struct {
     UShort		SiS_DDC2_Data;
     UShort		SiS_DDC2_Clk;
     Bool		Primary;		/* Display adapter is primary */
-    Bool		VGADecodingEnabled;	/* a0000 memory adress decoding is enabled */
+    Bool		VGADecodingEnabled;	/* a0000 memory address decoding is enabled */
     xf86Int10InfoPtr	pInt;			/* Our int10 */
     int			oldChipset;		/* Type of old chipset */
     int			RealVideoRam;		/* 6326 can only address 4MB, but TQ can be above */
@@ -1621,12 +1592,12 @@ extern int   SiS_GetTVyscale(ScrnInfoPtr pScrn);
 extern int   SiS_GetSISCRT1SaturationGain(ScrnInfoPtr pScrn);
 extern void  SiS_SetSISCRT1SaturationGain(ScrnInfoPtr pScrn, int val);
 
-extern unsigned int sis_pci_read_device_u32(int device, int offset);
+extern unsigned long sis_pci_read_device_u32(int device, int offset);
 extern unsigned char sis_pci_read_device_u8(int device, int offset);
-extern unsigned int sis_pci_read_host_bridge_u32(int offset);
+extern unsigned long sis_pci_read_host_bridge_u32(int offset);
 extern unsigned char sis_pci_read_host_bridge_u8(int offset);
 extern void sis_pci_write_host_bridge_u8(int offset, unsigned char value);
-extern void sis_pci_write_host_bridge_u32(int offset, unsigned int value);
+extern void sis_pci_write_host_bridge_u32(int offset, unsigned long value);
 #endif  /* _SIS_H_ */
 
 

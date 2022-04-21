@@ -113,7 +113,7 @@ sis_get_device (int device)
     return bridge;
 }
 
-unsigned int
+unsigned long
 sis_pci_read_device_u32(int device, int offset)
 {
     struct pci_device *host_bridge = sis_get_device(device);
@@ -134,7 +134,7 @@ sis_pci_read_device_u8(int device, int offset)
 }
 
 void
-sis_pci_write_host_bridge_u32(int offset, unsigned int value)
+sis_pci_write_host_bridge_u32(int offset, unsigned long value)
 {
     struct pci_device *host_bridge = sis_get_device(0);
     pci_device_cfg_write_u32(host_bridge, value, offset);
@@ -148,7 +148,7 @@ sis_pci_write_host_bridge_u8(int offset, unsigned char value)
 }
 
 #else
-unsigned int
+unsigned long
 sis_pci_read_device_u32(int device, int offset)
 {
     PCITAG tag = pciTag(0, device, 0);
@@ -163,7 +163,7 @@ sis_pci_read_device_u8(int device, int offset)
 }
 
 void
-sis_pci_write_host_bridge_u32(int offset, unsigned int value)
+sis_pci_write_host_bridge_u32(int offset, unsigned long value)
 {
     pciWriteLong(0x00000000, offset, value);
 }
@@ -177,7 +177,7 @@ sis_pci_write_host_bridge_u8(int offset, unsigned char value)
 
 #endif
 
-unsigned int
+unsigned long
 sis_pci_read_host_bridge_u32(int offset)
 {
     return sis_pci_read_device_u32(0, offset);
@@ -507,9 +507,9 @@ sis315Setup(ScrnInfoPtr pScrn)
 	"",
 	"--unknown--",
 	"",
-	"Asymetric Dual Channel SDR SDRAM",
+	"Asymmetric Dual Channel SDR SDRAM",
 	"",
-	"Asymetric Dual Channel DDR SDRAM",
+	"Asymmetric Dual Channel DDR SDRAM",
 	"",
 	"Dual channel SDR SDRAM",
 	"",
@@ -631,7 +631,7 @@ sis315Setup(ScrnInfoPtr pScrn)
        /* If SINGLE_CHANNEL_2_RANK or DUAL_CHANNEL_1_RANK -> mem * 2 */
        if((config1 == 0x01) || (config1 == 0x03)) pScrn->videoRam <<= 1;
 
-       /* If DDR asymetric -> mem * 1,5 */
+       /* If DDR asymmetric -> mem * 1,5 */
        if(config1 == 0x02) pScrn->videoRam += pScrn->videoRam/2;
 
        xf86DrvMsg(pScrn->scrnIndex, X_PROBED,
